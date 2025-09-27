@@ -7,6 +7,8 @@
     <string name="confirm">Confirm</string>
     <string name="back">Back</string>
     <string name="save">Save</string>
+    <string name="close">Close</string>
+    <string name="understood">Understood</string>
     <string name="delete">Delete</string>
     <string name="select">Select</string>
     <string name="clear">Clear</string>
@@ -65,6 +67,7 @@
     <string name="clear_garbage">Clear garbage</string>
     <string name="restore_data_from_file_title">Restore database from file?</string>
     <string name="restore_data_from_file_subtitle">The current database will be overwritten, data will be lost</string>
+    <string name="button_project_purpose">Project Purpose</string>
     <string name="settings_restore_database">Restore database</string>
     <string name="backup_database_title">Save database to devise storage?</string>
     <string name="backup_database_subtitle">The database contains your location history. Please handle it with care, this is your sensitive data</string>
@@ -360,4 +363,7 @@
     <string name="bluetooth_status_paired_description">Device is paired</string>
     
     <string name="unlowful_usage_disclaimer">This project is developed solely for educational, security research, and personal investigative purposes. The author does not endorse or encourage any use of this software for unlawful or unethical activities. You are solely responsible for ensuring your use of this tool complies with all applicable laws and regulations.</string>
+
+    <string name="what_is_this_app_for_title">What is this app for</string>
+    <string name="what_is_this_app_for_long">Bluetooth Low Energy (BLE) is a widely used wireless protocol that powers a huge variety of devices around you — from headphones, smartwatches, and fitness trackers to AirTags, IoT devices, game controllers, and even modern intimate gadgets. BLE devices communicate by broadcasting small packets of data, which can include device identifiers, metadata, and other information necessary for connectivity.\n\nThese broadcasts, while essential for device functionality, can also be used to track your presence and movements. For example, a cheap pair of wireless headphones may expose a persistent identifier publicly. Anyone listening to BLE packets nearby — whether governments, companies, or malicious actors — could potentially use that information to track you without your consent.\n\nFortunately, many modern devices implement privacy features in BLE to prevent tracking, such as randomized addresses and limited advertising. BLE Radar helps you distinguish between devices that protect your privacy and those that might be trackable. By analyzing BLE traffic in your surroundings, the app gives you insight into which devices are safe to use.\n\nBeyond analysis, BLE Radar can help protect you in real-time. The app can alert you when a suspicious device is nearby or if a device is moving with you over time, giving you an early warning against potential stalking or unwanted tracking. You can configure alerts based on device identifiers, types, or behaviors to fit your security needs.\n\nBy making this app, the goal is to empower you with knowledge and control over the BLE devices in your environment. Understanding which devices are broadcasting trackable information and which are privacy-conscious allows you to make informed decisions about what you use, wear, and interact with daily.</string>
 </resources>

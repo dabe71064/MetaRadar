@@ -33,6 +33,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -102,6 +103,7 @@ object MainScreen {
         )
         LocationDisabledDialog(viewModel)
         BluetoothDisabledDialog(viewModel)
+        SideEffect { viewModel.checkAndShowAboutApp() }
     }
 
     @Composable
@@ -249,10 +251,12 @@ object MainScreen {
                     disclaimerDialog.show()
                     false
                 }
+
                 viewModel.needToShowPermissionsIntro() -> {
                     permissionsIntro.show()
                     false
                 }
+
                 else -> {
                     viewModel.runBackgroundScanning()
                     true

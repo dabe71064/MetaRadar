@@ -16,10 +16,12 @@ import f.cking.software.data.helpers.LocationProvider
 import f.cking.software.data.helpers.PermissionHelper
 import f.cking.software.data.repo.SettingsRepository
 import f.cking.software.service.BgScanService
+import f.cking.software.ui.ScreenNavigationCommands
 import f.cking.software.ui.devicelist.DeviceListScreen
 import f.cking.software.ui.journal.JournalScreen
 import f.cking.software.ui.profileslist.ProfilesListScreen
 import f.cking.software.ui.settings.SettingsScreen
+import f.cking.software.utils.navigation.Router
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -31,6 +33,7 @@ class MainViewModel(
     private val settingsRepository: SettingsRepository,
     private val locationProvider: LocationProvider,
     private val intentHelper: IntentHelper,
+    private val router: Router,
 ) : ViewModel() {
 
     var scanStarted: Boolean by mutableStateOf(BgScanService.state.value.isProcessing())
@@ -119,6 +122,13 @@ class MainViewModel(
 
     fun disclaimerWasAccepted() {
         settingsRepository.setDisclaimerWasAccepted(true)
+    }
+
+    fun checkAndShowAboutApp() {
+        if (!settingsRepository.getWhatIsThisAppForWasShown()) {
+            router.navigate(ScreenNavigationCommands.OpenAboutScreen)
+            settingsRepository.setWhatIsThisAppForWasShown(true)
+        }
     }
 
     private fun observeScanInProgress() {

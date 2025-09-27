@@ -288,6 +288,10 @@ object SettingsScreen {
     @Composable
     private fun ProjectInformationBlock(viewModel: SettingsViewModel) {
         RoundedBox {
+            Button(modifier = Modifier.fillMaxWidth(), onClick = { viewModel.onProjectPurposeClick() }) {
+                Text(text = stringResource(R.string.button_project_purpose), color = MaterialTheme.colorScheme.onPrimary)
+            }
+            Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(R.string.project_github_title, stringResource(id = R.string.app_name)), fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.height(4.dp))
             Button(modifier = Modifier.fillMaxWidth(), onClick = { viewModel.onGithubClick() }) {
@@ -296,7 +300,7 @@ object SettingsScreen {
             Spacer(modifier = Modifier.height(8.dp))
             Text(text = stringResource(R.string.report_issue_title), fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.height(4.dp))
-            Button(modifier = Modifier.fillMaxWidth(), onClick = { viewModel.opReportIssueClick() }) {
+            Button(modifier = Modifier.fillMaxWidth(), onClick = { viewModel.onReportIssueClick() }) {
                 Text(text = stringResource(R.string.report), color = MaterialTheme.colorScheme.onPrimary)
             }
         }

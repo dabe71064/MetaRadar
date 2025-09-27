@@ -40,6 +40,7 @@ import f.cking.software.utils.graphic.glass.GlassShader
 import f.cking.software.utils.graphic.glass.RefractionMaterial
 import f.cking.software.utils.graphic.glass.Tilt
 import f.cking.software.utils.graphic.glass.glassPanel
+import timber.log.Timber
 import kotlin.math.max
 
 data object GlassBottomSpaceDefaults {
@@ -99,7 +100,7 @@ fun GlassBottomSpace(
     Box(modifier = modifier) {
         val context = LocalContext.current
         var navbarHeightPx by remember { mutableStateOf(height?.value?.let(context::dpToPx)?.toFloat()) }
-        val isRenderEffectSupported = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+        val isRenderEffectSupported = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && canUseShader()
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -228,4 +229,15 @@ fun Modifier.blurBottom(heightPx: Float, blur: Float, glassCurveSizeDp: Float): 
                 )
                 .asComposeRenderEffect()
         }
+}
+
+@Composable
+private fun canUseShader(): Boolean {
+    val context = LocalContext.current
+    return try {
+        ShaderCapability.canUseShader(context)
+    } catch (e: Throwable) {
+        Timber.e(e)
+        false
+    }
 }
