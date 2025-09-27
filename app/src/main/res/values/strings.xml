@@ -158,7 +158,8 @@
     <string name="add_filter">Add filter</string>
     <string name="filter_unknown">Unknown filter</string>
     <string name="min_following_duration">Min following duration</string>
-    <string name="min_interval_to_detect">Min interval to detect</string>
+    <string name="min_interval_to_detect">Minimum interval between detections</string>
+    <string name="min_interval_to_detect_description">Prevents this Alert Rule from triggering for the same device more than once within the selected time period. Useful to avoid frequent notifications.</string>
     <string name="time_placeholder">HH:MM</string>
     <string name="filter_unknown_title">Current filter is not supported by your app version</string>
     <string name="placeholder_device_name">Device name (or regex)</string>
