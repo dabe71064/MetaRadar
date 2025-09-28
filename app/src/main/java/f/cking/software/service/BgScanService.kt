@@ -7,6 +7,8 @@ import android.content.pm.ServiceInfo
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
+import android.widget.Toast
+import f.cking.software.R
 import f.cking.software.data.helpers.BleScannerHelper
 import f.cking.software.data.helpers.LocationProvider
 import f.cking.software.data.helpers.NotificationsHelper
@@ -95,14 +97,20 @@ class BgScanService : Service() {
             scan()
         } else {
             Timber.d("Background service launched")
-            startForeground(
-                NotificationsHelper.FOREGROUND_NOTIFICATION_ID,
-                notificationsHelper.buildForegroundNotification(
-                    NotificationsHelper.ServiceNotificationContent.NoDataYet,
-                    createCloseServiceIntent(this)
-                ),
-                ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE or ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION,
-            )
+            try {
+                startForeground(
+                    NotificationsHelper.FOREGROUND_NOTIFICATION_ID,
+                    notificationsHelper.buildForegroundNotification(
+                        NotificationsHelper.ServiceNotificationContent.NoDataYet,
+                        createCloseServiceIntent(this)
+                    ),
+                    ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE or ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION,
+                )
+            } catch (e: Exception) {
+                reportError(e)
+                Toast.makeText(this, R.string.unable_to_run_service_erro_toast, Toast.LENGTH_LONG).show()
+                stopSelf()
+            }
 
             permissionHelper.checkOrRequestPermission(
                 onRequestPermissions = { _, _, _ ->
@@ -156,7 +164,7 @@ class BgScanService : Service() {
 
     private fun handleScanResult(batch: List<BleScanDevice>) {
         scope.launch {
-            val notificationContent: NotificationsHelper.ServiceNotificationContent = if (batch.isNotEmpty()){
+            val notificationContent: NotificationsHelper.ServiceNotificationContent = if (batch.isNotEmpty()) {
                 handleNonEmptyBatch(batch)
             } else {
                 handleEmptyBatch()
