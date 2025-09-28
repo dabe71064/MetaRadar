@@ -295,6 +295,7 @@
     <string name="refresh">refresh</string>
 
     <!-- Notifications -->
+    <string name="unable_to_run_service_erro_toast">Unable to launch scanning service.</string>
     <string name="ble_scanner_is_started_but_no_data">BLE scanner is started but there is no data yet</string>
     <string name="known_devices_around">%s known devices around</string>
     <string name="total_devices_around">%s total devices around</string>

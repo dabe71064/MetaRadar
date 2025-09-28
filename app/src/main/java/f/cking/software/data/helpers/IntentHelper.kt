@@ -3,13 +3,11 @@ package f.cking.software.data.helpers
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.bluetooth.BluetoothAdapter
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
-import f.cking.software.data.helpers.IntentHelper.ScreenNavigation.BACKGROUND_LOCATION_DESCRIPTION
 import f.cking.software.data.helpers.IntentHelper.ScreenNavigation.Companion.toNavigationCommand
-import f.cking.software.data.helpers.IntentHelper.ScreenNavigation.MAIN
-import f.cking.software.data.helpers.IntentHelper.ScreenNavigation.entries
 import f.cking.software.openUrl
 import f.cking.software.ui.MainActivity
 import f.cking.software.ui.ScreenNavigationCommands
@@ -19,6 +17,7 @@ import f.cking.software.utils.navigation.Router
 class IntentHelper(
     private val activityProvider: ActivityProvider,
     private val router: Router,
+    private val context: Context,
 ) {
 
     /**
@@ -53,7 +52,7 @@ class IntentHelper(
 
     fun openAppSettings() {
         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-        val uri = Uri.fromParts("package", activityProvider.requireActivity().getPackageName(), null)
+        val uri = Uri.fromParts("package", context.packageName, null)
         intent.data = uri
         activityProvider.requireActivity().startActivity(intent)
     }
@@ -75,7 +74,7 @@ class IntentHelper(
     }
 
     fun openScreenIntent(screenName: ScreenNavigation): Intent {
-        val intent = Intent(activityProvider.requireActivity(), MainActivity::class.java)
+        val intent = Intent(context, MainActivity::class.java)
         intent.setAction(ACTION_OPEN_SCREEN)
         intent.putExtra(SCREEN_NAME, screenName.name)
         return intent

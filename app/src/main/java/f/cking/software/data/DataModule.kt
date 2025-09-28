@@ -35,7 +35,7 @@ class DataModule(
         single { DevicesRepository(get()) }
         single { PermissionHelper(get(), get(), get()) }
         single { ActivityProvider() }
-        single { IntentHelper(get(), get()) }
+        single { IntentHelper(get(), get(), get()) }
         single { RadarProfilesRepository(get()) }
         single { LocationProvider(get(), get(), get(), get()) }
         single { LocationRepository(get()) }
