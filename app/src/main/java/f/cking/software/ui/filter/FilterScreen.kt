@@ -126,6 +126,7 @@ object FilterScreen {
                 ) {
                     followingInterval.show()
                 }
+                Text(text = stringResource(R.string.min_interval_to_detect_description), fontWeight = FontWeight.Light)
             }
         }
     }

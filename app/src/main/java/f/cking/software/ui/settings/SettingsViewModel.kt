@@ -146,7 +146,7 @@ class SettingsViewModel(
         settingsRepository.setSilentMode(!settingsRepository.getSilentMode())
     }
 
-    fun opReportIssueClick() {
+    fun onReportIssueClick() {
         intentHelper.openUrl(BuildConfig.REPORT_ISSUE_URL)
     }
 
@@ -156,6 +156,10 @@ class SettingsViewModel(
 
     fun onGithubClick() {
         intentHelper.openUrl(BuildConfig.GITHUB_URL)
+    }
+
+    fun onProjectPurposeClick() {
+        router.navigate(ScreenNavigationCommands.OpenAboutScreen)
     }
 
     private fun observeLocationData() {
