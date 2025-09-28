@@ -33,6 +33,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -45,7 +46,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.positionInParent
+import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
@@ -102,6 +103,7 @@ object MainScreen {
         )
         LocationDisabledDialog(viewModel)
         BluetoothDisabledDialog(viewModel)
+        SideEffect { viewModel.checkAndShowAboutApp() }
     }
 
     @Composable
@@ -249,10 +251,12 @@ object MainScreen {
                     disclaimerDialog.show()
                     false
                 }
+
                 viewModel.needToShowPermissionsIntro() -> {
                     permissionsIntro.show()
                     false
                 }
+
                 else -> {
                     viewModel.runBackgroundScanning()
                     true
@@ -265,7 +269,7 @@ object MainScreen {
             modifier = Modifier
                 .onGloballyPositioned {
                     GlobalUiState.setBottomOffset(fabOffset = it.size.height.toFloat())
-                    geometry = Rect(Offset(it.positionInParent().x, it.positionInParent().y), Size(it.size.width.toFloat(), it.size.height.toFloat()))
+                    geometry = Rect(Offset(it.positionInRoot().x, it.positionInRoot().y), Size(it.size.width.toFloat(), it.size.height.toFloat()))
                 }
                 .pointerInteropFilter { event ->
                     val touchX = geometry.left + event.x

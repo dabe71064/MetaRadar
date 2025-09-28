@@ -20,7 +20,7 @@ object UiModule {
     val module = module {
         single { RouterImpl() }
         single<Router> { get<RouterImpl>() }
-        viewModel { MainViewModel(get(), get(), get(), get(), get(), get()) }
+        viewModel { MainViewModel(get(), get(), get(), get(), get(), get(), get()) }
         viewModel { DeviceListViewModel(get(), get(), get(), get(), get(), get(), get(), get(), get()) }
         viewModel { SettingsViewModel(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
         viewModel { ProfilesListViewModel(get(), get()) }

@@ -10,9 +10,15 @@
 > [!WARNING]
 > This project is developed **solely for educational, security research, and personal investigative purposes**. **The author does not endorse or encourage any use of this software for unlawful or unethical activities**. You are **solely responsible** for ensuring your use of this tool complies with all applicable laws and regulations.
 
-This app is a tool for analyzing Bluetooth (BLE) environments. Scans the BLE ether in the background, notifying you if the device you are looking for is nearby or if some unknown device has been following you for for a long time.
+Bluetooth Low Energy (BLE) is a widely used wireless protocol that powers a huge variety of devices around you — from headphones, smartwatches, and fitness trackers to AirTags, IoT devices, game controllers, and even modern intimate gadgets. BLE devices communicate by broadcasting small packets of data, which can include device identifiers, metadata, and other information necessary for connectivity.
 
-The app allows you to create flexible filters for the radar with logical operators. Able to distinguish manufacturers, explore Apple Airdrop packages, and match them with known contacts. Build a device movement map based on the scanned BLE ether around you. For example, you can search for devices that you have seen in a certain period of time, receive a notification if your lost headphones suddenly appear near you.
+These broadcasts, while essential for device functionality, can also be used to track your presence and movements. For example, a cheap pair of wireless headphones may expose a persistent identifier publicly. Anyone listening to BLE packets nearby — whether governments, companies, or malicious actors — could potentially use that information to track you without your consent.
+
+Fortunately, many modern devices implement privacy features in BLE to prevent tracking, such as randomized addresses and limited advertising. BLE Radar helps you distinguish between devices that protect your privacy and those that might be trackable. By analyzing BLE traffic in your surroundings, the app gives you insight into which devices are safe to use.
+
+Beyond analysis, BLE Radar can help protect you in real-time. The app can alert you when a suspicious device is nearby or if a device is moving with you over time, giving you an early warning against potential stalking or unwanted tracking. You can configure alerts based on device identifiers, types, or behaviors to fit your security needs.
+
+By making this app, the goal is to empower you with knowledge and control over the BLE devices in your environment. Understanding which devices are broadcasting trackable information and which are privacy-conscious allows you to make informed decisions about what you use, wear, and interact with daily.
 
 In general, the app is capable:
 * Scan, analyze and track Bluetooth devices around;
