@@ -52,7 +52,7 @@ class IntentHelper(
 
     fun openAppSettings() {
         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-        val uri = Uri.fromParts("package", activityProvider.requireActivity().getPackageName(), null)
+        val uri = Uri.fromParts("package", context.packageName, null)
         intent.data = uri
         activityProvider.requireActivity().startActivity(intent)
     }
